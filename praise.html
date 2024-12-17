@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-    <title>Inspiring Random Line</title>
+    <title>Praise</title>
     <style>
         body {
             background-color: #fff8fe; 
@@ -20,11 +20,10 @@
             text-align: center;
         }
 
-        /* Placeholder line above the button */
         .placeholder {
             color: #AA336A;
             font-size: 1.2em;
-            margin-bottom: 20px; /* space below the placeholder text */
+            margin-bottom: 20px;
         }
 
         button {
@@ -35,23 +34,25 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            border: 2px;
+            border-style: solid;
+            border-color: #ffa8ff;
         }
 
-        /* The container for the lines */
         .lines {
-            margin-top: 20px; /* space above the lines */
+            margin-top: 20px;
             color: #AA336A;
-            font-size: 1.2em;
+            font-size: 2em;
             max-width: 80%;
-            transition: opacity 0.5s ease-in-out;
-        }
+}
+.lines p {
+    transition: opacity 0.5s ease-in-out;
+}
 
-        /* Initially hidden (not visible) */
         .hidden {
             opacity: 0;
         }
 
-        /* When show class is added, it will fade in */
         .show {
             opacity: 1;
         }
@@ -63,7 +64,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- The placeholder line above the button -->
         <div class="placeholder">Remember, someone made this with you in mind <3</div>
         <button id="placeButton">Click me!</button>
         <div id="linesContainer" class="lines"></div>
@@ -102,25 +102,26 @@
             "Don't give up on your dreams, you've got this doll <3"
         ];
 
+        let lastIndex = -1;
         const placeButton = document.getElementById('placeButton');
         const linesContainer = document.getElementById('linesContainer');
 
         placeButton.addEventListener('click', function() {
-            // Clear the container (remove old line instantly)
-            linesContainer.innerHTML = '';
-            
-            // Pick a random line
-            const randomIndex = Math.floor(Math.random() * lines.length);
-            const randomLine = lines[randomIndex];
+linesContainer.innerHTML = '';
 
-            // Create a paragraph element with the chosen line
+let randomIndex;
+do {
+    randomIndex = Math.floor(Math.random() * lines.length);
+} while (randomIndex === lastIndex);
+
+lastIndex = randomIndex;
+const randomLine = lines[randomIndex];
+
             const p = document.createElement('p');
             p.textContent = randomLine;
-            // Initially apply 'hidden' class so it starts transparent
             p.classList.add('hidden'); 
             linesContainer.appendChild(p);
 
-            // Use requestAnimationFrame to allow initial render, then fade in
             requestAnimationFrame(() => {
                 p.classList.add('show');
                 p.classList.remove('hidden');
