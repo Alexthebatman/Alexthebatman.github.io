@@ -44,10 +44,16 @@
             color: #AA336A;
             font-size: 2em;
             max-width: 80%;
+personal
+        }
+        .lines p {
+         transition: opacity 0.5s ease-in-out;
+        }
 }
 .lines p {
     transition: opacity 0.5s ease-in-out;
 }
+main
 
         .hidden {
             opacity: 0;
@@ -60,6 +66,23 @@
         .placeholder {
             color: #89CFF0;
         }
+personal
+
+        @media (max-width: 600px) {
+            .placeholder {
+                font-size: 1em;
+            }
+
+            button {
+                font-size: 1.2em;
+                padding: 10px 20px;
+            }
+
+            .lines {
+                font-size: 1.5em;
+            }
+        }
+main
     </style>
 </head>
 <body>
@@ -99,7 +122,9 @@
             "What are friends for, if not to be there for you.",
             "Your future is so bright!",
             "You are so smart and incredible.",
-            "Don't give up on your dreams, you've got this doll <3"
+            "Don't give up on your dreams, you've got this doll <3",
+            "oompa loompa - Scarlet~"
+            "Don't give up on your dreams, you've got this doll <3" 
         ];
 
         let lastIndex = -1;
