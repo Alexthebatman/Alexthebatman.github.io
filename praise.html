@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <title>Inspiring Random Line</title>
+    <style>
+        body {
+            background-color: #fff8fe; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Placeholder line above the button */
+        .placeholder {
+            color: #AA336A;
+            font-size: 1.2em;
+            margin-bottom: 20px; /* space below the placeholder text */
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            font-size: 1.5em;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* The container for the lines */
+        .lines {
+            margin-top: 20px; /* space above the lines */
+            color: #AA336A;
+            font-size: 1.2em;
+            max-width: 80%;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Initially hidden (not visible) */
+        .hidden {
+            opacity: 0;
+        }
+
+        /* When show class is added, it will fade in */
+        .show {
+            opacity: 1;
+        }
+
+        .placeholder {
+            color: #89CFF0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- The placeholder line above the button -->
+        <div class="placeholder">Remember, someone made this with you in mind <3</div>
+        <button id="placeButton">Click me!</button>
+        <div id="linesContainer" class="lines"></div>
+    </div>
+    
+    <script>
+        const lines = [
+            "You’re an angel.",
+            "You’re lovely.",
+            "You are doing so well!",
+            "This world would be empty without your positivity!",
+            "You are someone’s reason for getting up in the morning <3",
+            "Your positivity combats the sadness, keep it up!",
+            "Cry it out, after all, we’re only human <3",
+            "Pretty girl.",
+            "You’re loved.",
+            "Mwah!",
+            "You deserve to be happy!",
+            "You matter.",
+            "It's okay to cry.",
+            "You're a good girl - Rune",
+            "Please have an amazing day <3",
+            "You are so strong honey.",
+            "Your laugh makes others happy!",
+            "You are always on at least one person's mind.",
+            "Life was meant to be lived.",
+            "Go outside, trust me, it'll make you happier <3",
+            "You are so beautiful.",
+            "You're the reason someone feels seen.",
+            "You are someone's ray of hope.",
+            "People feel safe around you <3",
+            "It's okay to be strong, people are here for you.",
+            "What are friends for, if not to be there for you.",
+            "Your future is so bright!",
+            "You are so smart and incredible.",
+            "Don't give up on your dreams, you've got this doll <3"
+        ];
+
+        const placeButton = document.getElementById('placeButton');
+        const linesContainer = document.getElementById('linesContainer');
+
+        placeButton.addEventListener('click', function() {
+            // Clear the container (remove old line instantly)
+            linesContainer.innerHTML = '';
+            
+            // Pick a random line
+            const randomIndex = Math.floor(Math.random() * lines.length);
+            const randomLine = lines[randomIndex];
+
+            // Create a paragraph element with the chosen line
+            const p = document.createElement('p');
+            p.textContent = randomLine;
+            // Initially apply 'hidden' class so it starts transparent
+            p.classList.add('hidden'); 
+            linesContainer.appendChild(p);
+
+            // Use requestAnimationFrame to allow initial render, then fade in
+            requestAnimationFrame(() => {
+                p.classList.add('show');
+                p.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
